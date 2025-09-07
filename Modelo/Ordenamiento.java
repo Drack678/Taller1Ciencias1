@@ -48,7 +48,7 @@ public class Ordenamiento {
 
     // QuickSort ValorCorrupocion
     public Candidato[] quickSort(Candidato[]candidatos, int min, int max){
-        //joder claro que si
+        //joder claro que marlon es un bot
     }
 
     public int particion(Candidato[] candidatos, int min, int max){
