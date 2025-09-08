@@ -9,29 +9,38 @@ public class GUI extends JFrame {
 
     private JTextField valorN, valorM, valorK;
     private JComboBox<String> varEleccion, distribucion;
-    private JLabel comparaciones, intercambios, tiempo;
+    private JLabel comparaciones, intercambios, tiempo, ganador;
     private JButton ordenarButton;
 
     public GUI() {
         setTitle("Eleccion con metodos de ordenamiento");
-        setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
-        // Centrar ventana al iniciar
-        setLocationRelativeTo(null);
+        // Pantalla completa al iniciar
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         // Panel superior con campos y combos
         JPanel topPanel = new JPanel(new GridLayout(5, 2, 10, 10));
         valorN = new JTextField();
         valorM = new JTextField();
         valorK = new JTextField();
-        varEleccion = new JComboBox<>(new String[]{"Distancia en marchas", "Clases perdidas", "Valor prebendas","Numero de sobornos","Corrupcion"});
-        distribucion = new JComboBox<>(new String[]{"Orden inverso", "Casi ordenada", "Aleatoria uniforme"});
+        varEleccion = new JComboBox<>(new String[]{
+                "Distancia en marchas",
+                "Clases perdidas",
+                "Valor prebendas",
+                "Numero de sobornos",
+                "Corrupcion"
+        });
+        distribucion = new JComboBox<>(new String[]{
+                "Orden inverso",
+                "Casi ordenada",
+                "Aleatoria uniforme"
+        });
 
         topPanel.add(new JLabel("Valor N:")); topPanel.add(valorN);
         topPanel.add(new JLabel("Valor M:")); topPanel.add(valorM);
-        topPanel.add(new JLabel("Valor k:")); topPanel.add(valorK);
+        topPanel.add(new JLabel("Valor K:")); topPanel.add(valorK);
         topPanel.add(new JLabel("Variable de eleccion:")); topPanel.add(varEleccion);
         topPanel.add(new JLabel("Distribucion de la lista a ordenar:")); topPanel.add(distribucion);
 
@@ -66,17 +75,21 @@ public class GUI extends JFrame {
 
         bottomPanel.add(labelsPanel, BorderLayout.NORTH);
 
+        // Label ganador debajo de los 3 labels
+        ganador = new JLabel("Ganador:", SwingConstants.CENTER);
+        bottomPanel.add(ganador, BorderLayout.CENTER);
+
         // Botón centrado
         ordenarButton = new JButton("Ordenar");
         ordenarButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Listener para actualizar labels
         ordenarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 comparaciones.setText("Comparaciones: " + valorN.getText());
                 intercambios.setText("Intercambios: " + valorM.getText());
                 tiempo.setText("Tiempo: " + valorK.getText());
+                ganador.setText("Ganador: Candidato " + valorN.getText()); // Ejemplo
             }
         });
 
@@ -114,12 +127,16 @@ public class GUI extends JFrame {
     public JLabel getTiempo() { return tiempo; }
     public void setTiempoText(String text) { tiempo.setText(text); }
 
+    public JLabel getGanador() { return ganador; }
+    public void setGanadorText(String text) { ganador.setText(text); }
+
     public JButton getOrdenarButton() { return ordenarButton; }
 
     public static void main(String[] args) {
         new GUI();
     }
 }
+
 
 
 
