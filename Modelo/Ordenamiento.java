@@ -5,11 +5,14 @@ public class Ordenamiento {
     private int intercambios;
     private int comparaciones;
     private long tiempo;
-    
 
-
-        // Burbuja distancia Marchas
-        public Candidato[] bubbleSort(Candidato[] candidatos) {
+    public Ordenamiento() {
+        this.intercambios = 0;
+        this.comparaciones = 0;
+        this.tiempo = 0;
+    }
+    // Burbuja distancia Marchas
+    public Candidato[] bubbleSort(Candidato[] candidatos) {
         long tiempoInicio = System.nanoTime();
         for (int i = 0; i < candidatos.length - 1; i++) {
             for (int j = 0; j < candidatos.length - 1 - i; j++) {
@@ -193,9 +196,5 @@ public class Ordenamiento {
         this.tiempo = tiempo;
     }
 
-    public Ordenamiento() {
-        this.intercambios = 0;
-        this.comparaciones = 0;
-        this.tiempo = 0;
-    }
+    
 }
