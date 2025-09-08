@@ -10,7 +10,9 @@ public class GUI extends JFrame {
     private JTextField valorN, valorM, valorK;
     private JComboBox<String> varEleccion, distribucion;
     private JLabel comparaciones, intercambios, tiempo, ganador;
+    private JLabel ricComparaciones, ricIntercambios, ricTiempo;
     private JButton ordenarButton;
+    private JScrollPane candidatos;
 
     public GUI() {
         setTitle("Eleccion con metodos de ordenamiento");
@@ -49,13 +51,13 @@ public class GUI extends JFrame {
         // Panel central con scroll vertical
         JPanel scrollPanel = new JPanel();
         scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.Y_AXIS));
-        JScrollPane scrollPane = new JScrollPane(scrollPanel,
+        candidatos = new JScrollPane(scrollPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         JPanel centerPanel = new JPanel(new BorderLayout());
         centerPanel.setBorder(BorderFactory.createTitledBorder("Lista de candidatos"));
-        centerPanel.add(scrollPane, BorderLayout.CENTER);
+        centerPanel.add(candidatos, BorderLayout.CENTER);
 
         add(centerPanel, BorderLayout.CENTER);
 
@@ -63,7 +65,7 @@ public class GUI extends JFrame {
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BorderLayout(5, 5));
 
-        // Subpanel para los 3 labels en una misma línea
+        // Subpanel para los 3 labels de resultados en la misma línea
         JPanel labelsPanel = new JPanel(new GridLayout(1, 3, 10, 10));
         comparaciones = new JLabel("Comparaciones:", SwingConstants.CENTER);
         intercambios = new JLabel("Intercambios:", SwingConstants.CENTER);
@@ -75,9 +77,21 @@ public class GUI extends JFrame {
 
         bottomPanel.add(labelsPanel, BorderLayout.NORTH);
 
-        // Label ganador debajo de los 3 labels
+        // Subpanel para los 3 labels de RIC debajo
+        JPanel ricPanel = new JPanel(new GridLayout(1, 3, 10, 10));
+        ricComparaciones = new JLabel("RIC Comparaciones:", SwingConstants.CENTER);
+        ricIntercambios = new JLabel("RIC Intercambios:", SwingConstants.CENTER);
+        ricTiempo = new JLabel("RIC Tiempo:", SwingConstants.CENTER);
+
+        ricPanel.add(ricComparaciones);
+        ricPanel.add(ricIntercambios);
+        ricPanel.add(ricTiempo);
+
+        bottomPanel.add(ricPanel, BorderLayout.CENTER);
+
+        // Label ganador debajo de los labels de RIC
         ganador = new JLabel("Ganador:", SwingConstants.CENTER);
-        bottomPanel.add(ganador, BorderLayout.CENTER);
+        bottomPanel.add(ganador, BorderLayout.SOUTH);
 
         // Botón centrado
         ordenarButton = new JButton("Ordenar");
@@ -90,19 +104,24 @@ public class GUI extends JFrame {
                 intercambios.setText("Intercambios: " + valorM.getText());
                 tiempo.setText("Tiempo: " + valorK.getText());
                 ganador.setText("Ganador: Candidato " + valorN.getText()); // Ejemplo
+                // Ejemplo de actualización de RIC
+                ricComparaciones.setText("RIC Comparaciones: " + valorN.getText());
+                ricIntercambios.setText("RIC Intercambios: " + valorM.getText());
+                ricTiempo.setText("RIC Tiempo: " + valorK.getText());
             }
         });
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(ordenarButton);
 
-        bottomPanel.add(buttonPanel, BorderLayout.SOUTH);
+        bottomPanel.add(buttonPanel, BorderLayout.NORTH);
 
         add(bottomPanel, BorderLayout.SOUTH);
 
         setVisible(true);
     }
 
+    // Getters y setters para los campos y labels
     public JTextField getValorN() { return valorN; }
     public void setValorN(String text) { valorN.setText(text); }
 
@@ -130,12 +149,25 @@ public class GUI extends JFrame {
     public JLabel getGanador() { return ganador; }
     public void setGanadorText(String text) { ganador.setText(text); }
 
+    public JLabel getRicComparaciones() { return ricComparaciones; }
+    public void setRicComparacionesText(String text) { ricComparaciones.setText(text); }
+
+    public JLabel getRicIntercambios() { return ricIntercambios; }
+    public void setRicIntercambiosText(String text) { ricIntercambios.setText(text); }
+
+    public JLabel getRicTiempo() { return ricTiempo; }
+    public void setRicTiempoText(String text) { ricTiempo.setText(text); }
+
+    public JScrollPane getCandidatos() { return candidatos; }
+    public void setCandidatos(JScrollPane candidatos) { this.candidatos = candidatos; }
+
     public JButton getOrdenarButton() { return ordenarButton; }
 
     public static void main(String[] args) {
         new GUI();
     }
 }
+
 
 
 

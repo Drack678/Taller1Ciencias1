@@ -7,7 +7,7 @@ public class GeneradorDatos {
 
     private static final Random random = new Random(42); // semilla fija para reproducibilidad
 
-    public static Candidato[] generar(int n, int m, String distribucion) {
+    public Candidato[] generar(int n, int m, String distribucion) {
         Candidato[] candidatos = new Candidato[n];
 
         // datos base aleatorios desde 1 hasta m
