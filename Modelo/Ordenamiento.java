@@ -17,7 +17,7 @@ public class Ordenamiento {
         for (int i = 0; i < candidatos.length - 1; i++) {
             for (int j = 0; j < candidatos.length - 1 - i; j++) {
                 this.comparaciones++;
-                if (candidatos[j].getDistanciaMarchas() > candidatos[j + 1].getClasesPerdidas()) {
+                if (candidatos[j].getDistanciaMarchas() > candidatos[j + 1].getDistanciaMarchas()) {
                     Candidato temp = candidatos[j];
                     candidatos[j] = candidatos[j + 1];
                     candidatos[j + 1] = temp;
@@ -72,25 +72,29 @@ public class Ordenamiento {
     }
 
     public int particion(Candidato[] candidatos, int min, int max){
-        int pivote = candidatos[max].getValorCorrupcion();
-        int i = min-1;
-        
-        for(int j = min; j<max; j++){
-            this.comparaciones++;
-            if (candidatos[j].getValorCorrupcion()<pivote) {
-                i++;
-                int a = candidatos[i].getValorCorrupcion();
-                candidatos[i].setValorCorrupcion(candidatos[j].getClasesPerdidas());
-                candidatos[j].setValorCorrupcion(a);
-                this.intercambios++;
-            }
-        }
-        int b = candidatos[i].getValorCorrupcion();
-        candidatos[i+1].setValorCorrupcion(candidatos[max].getValorCorrupcion());
-        candidatos[max].setValorCorrupcion(b);
+    int pivote = candidatos[max].getValorCorrupcion();
+    int i = min - 1;
 
-        return i+1;
+    for(int j = min; j < max; j++){
+        this.comparaciones++;
+        if (candidatos[j].getValorCorrupcion() < pivote) {
+            i++;
+            // swap completo de objetos
+            Candidato temp = candidatos[i];
+            candidatos[i] = candidatos[j];
+            candidatos[j] = temp;
+            this.intercambios++;
+        }
     }
+
+    // swap final con el pivote
+    Candidato temp = candidatos[i+1];
+    candidatos[i+1] = candidatos[max];
+    candidatos[max] = temp;
+
+    return i+1;
+}
+
 
     // MergeSort valorPrbendas
     public Candidato[] mergeSort(Candidato[]candidatos){
@@ -128,7 +132,7 @@ public class Ordenamiento {
 
         while (i < izq.length && j < der.length) {
             this.comparaciones++;
-            if (izq[i].getValorPrebendas()>= der[j].getValorPrebendas()) {
+            if (izq[i].getValorPrebendas()< der[j].getValorPrebendas()) {
                 resultado[k++] = izq[i++];
                 this.intercambios++;
             } 
@@ -156,10 +160,12 @@ public class Ordenamiento {
         long tiempoInicio = System.nanoTime();
         
             for (int i = 0; i < candidatos.length; i++) {
-                this.comparaciones++;
                 int indice = i ;
                 for (int j = i+1; j < candidatos.length; j++) {
-                    indice= j;
+                    this.comparaciones++;
+                    if (candidatos[j].getNumSobornos() < candidatos[indice].getNumSobornos()) {
+                        indice = j;
+                    }
                 }    
             if (indice != i) {
             Candidato temp = candidatos[i];
