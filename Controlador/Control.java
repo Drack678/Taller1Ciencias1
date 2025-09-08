@@ -94,6 +94,8 @@ public class Control implements ActionListener{
                 this.gui.getRicComparaciones().setText("RIC comparaciones:"+ricComparaciones);
                 this.gui.getRicIntercambios().setText("RIC intercambios"+ricIntercambios);
                 this.gui.getRicTiempo().setText("RIC tiempo"+ricTiempo);
+                Candidato c = candidatos[0];
+                this.gui.getGanador().setText("id:"+c.getId()+","+" distancia en marchas:"+c.getDistanciaMarchas()+","+" clases perdidas:"+c.getClasesPerdidas()+","+" valor prebendas:"+c.getValorPrebendas()+","+" numero de sobornos:"+c.getNumSobornos()+","+" corrupcion:"+c.getValorCorrupcion());
             }
             else if(this.gui.getVarEleccion().getSelectedItem().equals("Clases perdidas")) {
                 long mediaTiempo = 0;
@@ -138,6 +140,8 @@ public class Control implements ActionListener{
                 this.gui.getRicComparaciones().setText("RIC comparaciones:"+ricComparaciones);
                 this.gui.getRicIntercambios().setText("RIC intercambios"+ricIntercambios);
                 this.gui.getRicTiempo().setText("RIC tiempo"+ricTiempo);
+                Candidato c = candidatos[0];
+                this.gui.getGanador().setText("id:"+c.getId()+","+" distancia en marchas:"+c.getDistanciaMarchas()+","+" clases perdidas:"+c.getClasesPerdidas()+","+" valor prebendas:"+c.getValorPrebendas()+","+" numero de sobornos:"+c.getNumSobornos()+","+" corrupcion:"+c.getValorCorrupcion());
             }
             else if(this.gui.getVarEleccion().getSelectedItem().equals("Valor prebendas")){
                 long mediaTiempo = 0;
@@ -182,6 +186,8 @@ public class Control implements ActionListener{
                 this.gui.getRicComparaciones().setText("RIC comparaciones:"+ricComparaciones);
                 this.gui.getRicIntercambios().setText("RIC intercambios"+ricIntercambios);
                 this.gui.getRicTiempo().setText("RIC tiempo"+ricTiempo);
+                Candidato c = candidatos[0];
+                this.gui.getGanador().setText("id:"+c.getId()+","+" distancia en marchas:"+c.getDistanciaMarchas()+","+" clases perdidas:"+c.getClasesPerdidas()+","+" valor prebendas:"+c.getValorPrebendas()+","+" numero de sobornos:"+c.getNumSobornos()+","+" corrupcion:"+c.getValorCorrupcion());
 
             }
             else if(this.gui.getVarEleccion().getSelectedItem().equals("Numero de sobornos")){
@@ -227,6 +233,8 @@ public class Control implements ActionListener{
                 this.gui.getRicComparaciones().setText("RIC comparaciones:"+ricComparaciones);
                 this.gui.getRicIntercambios().setText("RIC intercambios"+ricIntercambios);
                 this.gui.getRicTiempo().setText("RIC tiempo"+ricTiempo);
+                Candidato c = candidatos[0];
+                this.gui.getGanador().setText("id:"+c.getId()+","+" distancia en marchas:"+c.getDistanciaMarchas()+","+" clases perdidas:"+c.getClasesPerdidas()+","+" valor prebendas:"+c.getValorPrebendas()+","+" numero de sobornos:"+c.getNumSobornos()+","+" corrupcion:"+c.getValorCorrupcion());
 
             }
             else if(this.gui.getVarEleccion().getSelectedItem().equals("Corrupcion")){
@@ -272,6 +280,8 @@ public class Control implements ActionListener{
                 this.gui.getRicComparaciones().setText("RIC comparaciones:"+ricComparaciones);
                 this.gui.getRicIntercambios().setText("RIC intercambios"+ricIntercambios);
                 this.gui.getRicTiempo().setText("RIC tiempo"+ricTiempo);
+                Candidato c = candidatos[0];
+                this.gui.getGanador().setText("El ganador es: "+"id:"+c.getId()+","+" distancia en marchas:"+c.getDistanciaMarchas()+","+" clases perdidas:"+c.getClasesPerdidas()+","+" valor prebendas:"+c.getValorPrebendas()+","+" numero de sobornos:"+c.getNumSobornos()+","+" corrupcion:"+c.getValorCorrupcion());
             }
 
 
